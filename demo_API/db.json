@@ -1,0 +1,29 @@
+{
+  "danhmuc": [
+    {
+      "id": 1,
+      "name": "Giay nike",
+      "price": 100000
+    },
+    {
+      "id": 2,
+      "name": "Giay nike",
+      "price": 100000
+    },
+    {
+      "id": 3,
+      "name": "Giay nike",
+      "price": 100000
+    }
+  ],
+  "sanPham": [
+    {
+      "id": 1,
+      "name": "Giay nike",
+      "price": 100000
+    }
+  ],
+  "id": {
+    "name": "typicode"
+  }
+}

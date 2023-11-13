@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="./css/css/bootstrap.css">
+<script src="./css/js/bootstrap.js"></script>
+<script src="./JS/js/ajax.googleapis.com_ajax_libs_angularjs_1.8.2_angular.min.js"></script>
+
+<body>
+    <!-- khai bao the html -->
+
+    <!-- khai bao 2 ng-controller 1-->
+    <div ng-controller="myController01">
+        <h1>{{xinChao}}</h1>
+        <br>
+        <hr>
+        <h1>{{thoiTiet}}</h1>
+        <h1>Hien thi danh sach danh muc</h1>
+        <!-- <ul>
+            <li ng-repeat="danhmuc in danhSachDanhMuc" ng-show="danhmuc.id===1" ng-if.id===1>
+                ID : {{danhmuc.id}} <br>
+                Name: {{danhmuc.name}} <br>
+                Price: {{danhmuc.price}} <br>
+            </li>
+        </ul> -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="danhmuc in danhSachDanhMuc">
+                    <td>{{danhmuc.id}}</td>
+                    <td>{{danhmuc.name}}</td>
+                    <td>{{danhmuc.price}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- end khai bao 1 ng-controller 1-->
+
+    <!-- khai bao 2 ng-controller 2-->
+    <div ng-controller="myController02">
+        <h1>{{xinChao}}</h1>
+    </div>
+    <!-- end khai bao 2 ng-controller 2-->
+
+
+</body>
+
+<script>
+    // khoi ao app
+    var myApp = angular.module("myApp", []);
+    // end khai bao App
+
+
+    //khoi tao myController01
+    myApp.controller("myController01", function ($scope, $http) {
+        $scope.xinChao = "1 xin chao";
+        $scope.thoiTiet = "18 Độ";
+
+        $http.get("http://localhost:3000/danhmuc")
+            .then(function (response) {
+                $scope.danhSachDanhMuc = response.data;
+                console.log($scope.danhSachDanhMuc);
+            })
+
+    })
+    // end myController01
+
+    // khoi tao myControlelr02
+    myApp.controller("myController02", function ($scope) {
+        $scope.xinChao = "2 xin chao";
+
+    })
+    // end myController02
+</script>
+
+</html>
